@@ -14,6 +14,22 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- All copy and pasto operations go to the system clipboard
+vim.opt.clipboard = "unnamedplus"
+-- Copying and pasting use wl-clipboard commands
+vim.g.clipboard = {
+    name = "wl-clipboard",
+    copy = {
+        ["+"] = "wl-copy",
+        ["*"] = "wl-copy",
+    },
+    paste = {
+        ["+"] = "wl-paste --no-newline",
+        ["*"] = "wl-paste --no-newline",
+    },
+    cache_enabled = 0,
+}
+
 -- Disable new line from extending comments
 -- Use "FileType" event to change the format options after they are set
 vim.api.nvim_create_autocmd("FileType", {
