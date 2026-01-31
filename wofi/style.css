@@ -1,0 +1,21 @@
+window {
+    font-size: 28px;
+    font-family: "Fira Mono Medium";
+    background-color: rgba(16,16,16,0.8);
+    color: rgb(220,220,220);
+}
+
+#entry:selected {
+    background-color: rgb(200,40,40);
+}
+
+#text:selected {
+    color: rgb(200,200,200);
+}
+
+#input {
+    background-color: rgb(5,5,5);
+    color: white;
+    border: 5px solid #F2AD4B;
+    border-radius: 6px;
+}
