@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+xwayland enable
+
 font pango: FiraMono Medium 12
 
 ### Variables
