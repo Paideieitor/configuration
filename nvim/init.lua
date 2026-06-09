@@ -45,6 +45,10 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Change default color scheme
 vim.cmd("colorscheme retrobox")
 
+-- Remove the background
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
 -- Add system headers to the file search
 vim.cmd("set path+=/usr/include")
 vim.cmd("set path+=/usr/local/include")

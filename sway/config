@@ -18,7 +18,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term footclient
 # Your preferred application launcher
 set $menu wofi --show run
 
@@ -26,11 +26,14 @@ set $menu wofi --show run
 exec gentoo-pipewire-launcher restart &
 ### Notification daemon
 exec mako
+### Terminal server
+exec foot --server
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg "#2E1010" solid_color
+# output * bg "#000000" solid_color
+output * bg reshiram.png fill
 #
 ## Default border
 #
@@ -91,13 +94,6 @@ focus_follows_mouse yes
 
     # Start your launcher
     bindsym $mod+d exec $menu
-
-    # Lock screen
-    bindsym $mod+z exec swaylock --ignore-empty-password --show-failed-attempts \
-       --color 1e1e1e --inside-color cccccc --ring-color ffffff \
-       --inside-clear-color 11a8cd --ring-clear-color 29b8db \
-       --inside-ver-color 2472c8 --ring-ver-color 3b8eea \
-       --inside-wrong-color cd3131 --ring-wrong-color f14c4c
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -218,13 +214,13 @@ bindsym $mod+r mode "resize"
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
-    bindsym --locked KP_Begin exec wpctl set-mute @DEFAULT_SINK@ toggle
-    bindsym --locked KP_Left exec wpctl set-volume @DEFAULT_SINK@ -5%
-    bindsym --locked KP_Right exec wpctl set-volume @DEFAULT_SINK@ +5%
+    bindsym --locked KP_Begin exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym --locked KP_Left exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym --locked KP_Right exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     # bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked KP_Up exec brightnessctl set 5%-
-    bindsym --locked KP_Down exec brightnessctl set 5%+
+    # Special keys to adjust brightness via acpilight
+    bindsym --locked KP_Up exec xbacklight -inc 5
+    bindsym --locked KP_Down exec xbacklight -dec 5
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
